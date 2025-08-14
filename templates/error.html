@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطأ - تيرمكس ماتركس</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #e0f7fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.85);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 82, 82, 0.3);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        
+        .header {
+            padding: 30px 20px;
+            background: rgba(40, 0, 0, 0.7);
+            border-bottom: 2px solid #ff5252;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ff5252, #ff9e80);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .error-icon {
+            font-size: 6rem;
+            color: #ff5252;
+            margin: 30px 0;
+            text-shadow: 0 0 20px rgba(255, 82, 82, 0.5);
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .error-message {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #ff9e80;
+            line-height: 1.6;
+            background: rgba(255, 50, 50, 0.2);
+            border: 1px solid #ff5252;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        .suggestion {
+            background: rgba(0, 150, 255, 0.2);
+            border: 1px solid #0091ea;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            color: #80deea;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(90deg, #00bcd4, #00ff9d);
+            color: #0a192f;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+            margin: 20px 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 188, 212, 0.6);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #80deea;
+            border: 2px solid #00838f;
+            box-shadow: none;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(0, 131, 143, 0.2);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .error-icon { font-size: 4rem; }
+            .content { padding: 20px; }
+            .error-message { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>حدث خطأ!</h1>
+        </div>
+        
+        <div class="content">
+            <div class="error-icon">✗</div>
+            
+            <div class="error-message">
+                {{ error }}
+            </div>
+            
+            <div class="suggestion">
+                <p>نصائح استكشاف الأخطاء وإصلاحها:</p>
+                <ul style="text-align: right; margin-top: 10px; padding-right: 20px;">
+                    <li>تأكد من صحة بيانات API ورقم الهاتف</li>
+                    <li>تحقق من اتصال الإنترنت</li>
+                    <li>تأكد من إدخال الكود الصحيح خلال 5 دقائق</li>
+                    <li>إذا كان الحساب محميًا بتحقق بخطوتين، تأكد من كلمة المرور</li>
+                    <li>حاول مرة أخرى بعد بضع دقائق</li>
+                </ul>
+            </div>
+            
+            <a href="/" class="btn">العودة للصفحة الرئيسية</a>
+            <a href="/login" class="btn btn-secondary">إعادة المحاولة</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كود التحقق - تيرمكس ماتركس</title>
+    <style>
+        /* نفس تنسيق صفحة تسجيل الدخول */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #e0f7fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.85);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(64, 224, 208, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header {
+            padding: 25px 20px;
+            background: rgba(0, 20, 40, 0.7);
+            border-bottom: 2px solid #00bcd4;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00bcd4, #00ff9d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #80deea;
+        }
+        
+        input {
+            width: 100%;
+            padding: 14px;
+            background: rgba(0, 30, 60, 0.7);
+            border: 2px solid #00838f;
+            border-radius: 10px;
+            color: #e0f7fa;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            letter-spacing: 5px;
+            font-size: 1.5rem;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #00bcd4;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #00bcd4, #00ff9d);
+            color: #0a192f;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+            margin-bottom: 15px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 188, 212, 0.6);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .resend-btn {
+            background: transparent;
+            color: #80deea;
+            border: 2px solid #00838f;
+            box-shadow: none;
+        }
+        
+        .resend-btn:hover {
+            background: rgba(0, 131, 143, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #80deea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #00bcd4;
+        }
+        
+        .error {
+            background: rgba(255, 50, 50, 0.2);
+            border: 1px solid #ff5252;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: #ff5252;
+            text-align: center;
+        }
+        
+        .message {
+            background: rgba(0, 150, 255, 0.2);
+            border: 1px solid #0091ea;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: #80deea;
+            text-align: center;
+        }
+        
+        .countdown {
+            color: #00bcd4;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 600px) {
+            .form-container { padding: 20px; }
+            h2 { font-size: 1.7rem; }
+            input { font-size: 1.3rem; letter-spacing: 3px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>كود التحقق</h2>
+            <p>أدخل الكود المكون من 5 أرقام</p>
+        </div>
+        
+        <div class="form-container">
+            {% if error %}
+            <div class="error">{{ error }}</div>
+            {% endif %}
+            
+            {% if message %}
+            <div class="message">{{ message }}</div>
+            {% endif %}
+            
+            <form method="POST">
+                <div class="form-group">
+                    <label for="code">كود التحقق</label>
+                    <input type="text" id="code" name="code" required maxlength="5" placeholder="12345" autocomplete="off" autofocus>
+                </div>
+                
+                <button type="submit" class="btn">تأكيد الكود</button>
+                <button type="submit" name="resend" value="1" class="btn resend-btn">إعادة إرسال الكود</button>
+            </form>
+            
+            <a href="/login" class="back-link">العودة لتسجيل الدخول</a>
+        </div>
+    </div>
+    
+    <script>
+        // تحديث حقل الكود لتقبل الأرقام فقط
+        document.getElementById('code').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
+</body>
+</html>
